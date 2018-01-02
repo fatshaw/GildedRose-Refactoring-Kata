@@ -60,6 +60,14 @@ public class GildedRoseTest {
     }
 
     @Test
+    public void should_increase_twice_quantity_for_agedbrie_when_sellin_by_date() {
+        Item[] items = new Item[]{new Item("Aged Brie", 0, 0)};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(2, app.items[0].getQuatity());
+    }
+
+    @Test
     public void should_quantity_never_negative() {
         Item[] items = new Item[]{new Item("foo", 1, 0)};
         GildedRose app = new GildedRose(items);
