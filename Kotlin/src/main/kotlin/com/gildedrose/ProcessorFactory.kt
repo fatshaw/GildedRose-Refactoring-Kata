@@ -11,8 +11,11 @@ interface Processor {
 
 open class NormalProcessor : Processor {
     override fun process(item: Item) {
-        getOlder(item)
         updateQuality(item)
+        getOlder(item)
+        if (item.isExpired()) {
+            updateQuality(item)
+        }
     }
 
     open fun getOlder(item: Item) {
@@ -36,15 +39,13 @@ class BackstageProcess : NormalProcessor() {
     override fun updateQuality(item: Item) {
         item.increaseQuality()
 
-        if (item.sellIn < 10) {
+        if (item.sellIn <= 10) {
             item.increaseQuality()
         }
-
-        if (item.sellIn < 5) {
+        if (item.sellIn <= 5) {
             item.increaseQuality()
         }
-
-        if (item.sellIn < 0) {
+        if (item.sellIn <= 0) {
             item.quality = 0
         }
     }
