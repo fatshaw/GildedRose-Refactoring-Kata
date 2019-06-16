@@ -1,9 +1,7 @@
 package com.gildedrose.processor
 
-import com.gildedrose.ItemData
-
 open class NormalProcessor : Processor {
-    override fun process(item: ItemData) {
+    override fun process(item: ItemProcess) {
         updateQuality(item)
         getOlder(item)
         if (item.isExpired()) {
@@ -11,11 +9,11 @@ open class NormalProcessor : Processor {
         }
     }
 
-    open fun getOlder(item: ItemData) {
+    open fun getOlder(item: ItemProcess) {
         item.getOlder()
     }
 
-    open fun updateQuality(item: ItemData) {
+    open fun updateQuality(item: ItemProcess) {
         item.degradeQuality()
     }
 }

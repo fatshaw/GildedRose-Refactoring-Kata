@@ -1,10 +1,8 @@
 package com.gildedrose.processor
 
-import com.gildedrose.ItemData
-
 class BackstageProcess : NormalProcessor() {
 
-    override fun updateQuality(item: ItemData) {
+    override fun updateQuality(item: ItemProcess) {
         item.increaseQuality()
 
         if (item.sellIn <= 10) {
@@ -14,7 +12,7 @@ class BackstageProcess : NormalProcessor() {
             item.increaseQuality()
         }
         if (item.sellIn <= 0) {
-            item.quality = 0
+            item.setQuanlityToZero()
         }
     }
 }
